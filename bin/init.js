@@ -1,5 +1,10 @@
 'use strict';
 
-exports.run = function () {
-  console.log("yo");
+var
+  utils;
+
+utils = require('../lib/utils');
+
+module.exports = function () {
+  utils.checkRequirements();
 };
