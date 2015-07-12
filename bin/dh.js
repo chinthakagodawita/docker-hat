@@ -4,27 +4,28 @@
 var
   shell,
   yargs,
-  argv;
+  libUtils,
+  argv,
+  cmd;
 
 shell = require('shelljs');
 yargs = require('yargs');
+libUtils = require('../lib/utils');
 
-argv = yargs.usage("$0 command")
-  .command("init", "Install boot2docker.", function (yargs) {
-    require('./init.js')();
+argv = yargs.usage('dh <command>')
+  .command('init', 'Install boot2docker.', function (yargs) {
+    libUtils.runSubscript('dh-init', yargs);
   })
-  .command("start", "push changes up to GitHub", function (yargs) {
-    require('./start.js')();
+  .command('soe', 'Controls the SOE', function (yargs) {
+    libUtils.runSubscript('dh-soe', yargs);
   })
-  .command("stop", "commit and push changes in one step", function (yargs) {
+  .command('proxy', 'Commands for the auto-discover proxy container', function (yargs) {
+    libUtils.runSubscript('dh-proxy', yargs);
+  })
+  .command('exec', 'Run a command in a container', function (yargs) {
 
   })
-  .command("restart", "commit and push changes in one step", function (yargs) {
-
-  })
-  .command("proxy", "commit and push changes in one step")
-  .demand(1, "must provide a valid command")
-  .help("h")
-  .alias("h", "help")
-  .argv
-
+  .demand(1, 'please provide a valid command')
+  .help('h')
+  .alias('h', 'help')
+  .argv;

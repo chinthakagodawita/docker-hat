@@ -4,7 +4,8 @@
   "description": "Helper commands to run and manage Docker containers on a Mac.",
   "main": "bin/dh.js",
   "bin": {
-    "dh": "bin/dh.js"
+    "dh": "bin/dh.js",
+    "dh-soe": "bin/dh-soe.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
