@@ -4,25 +4,26 @@
 var
   shell,
   yargs,
-  libExec,
+  libSoe,
+  libUtils,
   argv,
   cmd;
 
 shell = require('shelljs');
 yargs = require('yargs');
-libExec = require('../lib/docker/execution');
+libSoe = require('../lib/soe');
+libUtils = require('../lib/utils');
 
 argv = yargs.usage('dh soe <command>')
   .command('start', 'Start a SOE container', function (yargs) {
+    libSoe.start(libUtils.getYargsContainerInfo(yargs, 'start'));
+  })
+  .command('stop', 'Stop a SOE container', function (yargs) {
     var
       subArgv,
       sources;
 
-    subArgv = yargs.usage('dh soe start <container name> [options]')
-    .option('s', {
-      alias: 'sources',
-      description: 'Directory to use for sources, defaults to the current directory'
-    })
+    subArgv = yargs.usage('dh soe stop <container name>')
     .help('help')
     .argv;
 
@@ -30,20 +31,10 @@ argv = yargs.usage('dh soe <command>')
       throw new Error('please provide a container name');
     }
 
-    if (!subArgv.s) {
-      sources = '.';
-    }
-
-    libExec.startContainer({
-      name: subArgv._[1],
-      vols: []
-    });
+    libSoe.stop(subArgv._[1]);
   })
-  .command('stop', 'commit and push changes in one step', function (yargs) {
-
-  })
-  .command('restart', 'commit and push changes in one step', function (yargs) {
-
+  .command('restart', 'Restart a SOE container', function (yargs) {
+    libSoe.restart(libUtils.getYargsContainerInfo(yargs, 'restart'));
   })
   .demand(1, 'please provide a valid command')
   .example('dh soe start mysite.dev', 'Start a container with the hostname "mysite.dev" using sources from the current directory.')
