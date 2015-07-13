@@ -16,7 +16,7 @@ libUtils = require('../lib/utils');
 
 argv = yargs.usage('dh soe <command>')
   .command('start', 'Start a SOE container', function (yargs) {
-    libSoe.start(libUtils.getYargsContainerInfo(yargs, 'start'));
+    libSoe.start(libUtils.common.getYargsContainerInfo(yargs, 'start'));
   })
   .command('stop', 'Stop a SOE container', function (yargs) {
     var
@@ -34,7 +34,11 @@ argv = yargs.usage('dh soe <command>')
     libSoe.stop(subArgv._[1]);
   })
   .command('restart', 'Restart a SOE container', function (yargs) {
-    libSoe.restart(libUtils.getYargsContainerInfo(yargs, 'restart'));
+    libSoe.restart(libUtils.common.getYargsContainerInfo(yargs, 'restart'));
+  })
+  .option('d', {
+    alias: 'debug',
+    description: 'Display debug messages.'
   })
   .demand(1, 'please provide a valid command')
   .example('dh soe start mysite.dev', 'Start a container with the hostname "mysite.dev" using sources from the current directory.')
