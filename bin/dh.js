@@ -15,26 +15,29 @@ libUtils = require('../lib/utils');
 // Make sure we have everything we need.
 libUtils.checkRequirements();
 
-// Prompt to init if required.
-if (!libUtils.checkInit()) {
-  console.log("It looks like you haven't run `init` yet.");
-  console.log("Please run `dh init` before running any other commands.\n");
-}
-
 argv = yargs.usage('dh <command>')
   .command('init', 'Install/configure boot2docker and any other dependencies.', function (yargs) {
     libUtils.runSubscript('dh-init', yargs);
   })
   .command('soe', 'Commands to control SOE containers.', function (yargs) {
-    // @TODO: check if init has been run.
+    // Prompt to init if required.
+    if (!libUtils.checkInit(true)) {
+      process.exit(1);
+    }
     libUtils.runSubscript('dh-soe', yargs);
   })
   .command('proxy', 'Commands for the auto-discover proxy container.', function (yargs) {
-    // @TODO: check if init has been run.
+    // Prompt to init if required.
+    if (!libUtils.checkInit(true)) {
+      process.exit(1);
+    }
     libUtils.runSubscript('dh-proxy', yargs);
   })
   .command('exec', 'Run a command in a container.', function (yargs) {
-    // @TODO: check if init has been run.
+    // Prompt to init if required.
+    if (!libUtils.checkInit(true)) {
+      process.exit(1);
+    }
   })
   .demand(1, 'please provide a valid command')
   .check(function (argv, opts) {
