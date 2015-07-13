@@ -5,24 +5,38 @@ var
   shell,
   yargs,
   libUtils,
+  libInit,
   argv,
   cmd;
 
 shell = require('shelljs');
 yargs = require('yargs');
 libUtils = require('../lib/utils');
+libInit = require('../lib/init');
 
 // Make sure we have everything we need.
 libUtils.common.checkRequirements();
 
 argv = yargs.usage('dh <command>')
   .command('init', 'Install/configure boot2docker and any other dependencies.', function (yargs) {
-    libUtils.common.runSubscript('dh-init', yargs);
+    var
+      subArgv,
+      force;
+
+    subArgv = yargs.reset()
+      .option('f', {
+        alias: 'force',
+        description: 'Ignore initialisation status and force reinit.'
+      })
+      .help('help')
+      .argv;
+
+    libInit.init(subArgv.f);
   })
   .command('soe', 'Commands to control SOE containers.', function (yargs) {
     // Prompt to init if required.
     if (!libUtils.common.checkInit(true)) {
-      // process.exit(1);
+      process.exit(1);
     }
     libUtils.common.runSubscript('dh-soe', yargs);
   })
