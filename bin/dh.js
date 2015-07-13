@@ -24,6 +24,7 @@ argv = yargs.usage('dh <command>')
       force;
 
     subArgv = yargs.reset()
+      .usage('dh init [options]')
       .option('f', {
         alias: 'force',
         description: 'Ignore initialisation status and force reinit.'
