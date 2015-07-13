@@ -24,6 +24,10 @@ argv = yargs.usage('dh soe <command>')
       sources;
 
     subArgv = yargs.usage('dh soe stop <container name>')
+    .option('d', {
+      alias: 'debug',
+      description: 'Display debug messages.'
+    })
     .help('help')
     .argv;
 

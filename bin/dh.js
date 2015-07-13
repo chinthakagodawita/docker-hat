@@ -35,21 +35,21 @@ argv = yargs.usage('dh <command>')
   })
   .command('soe', 'Commands to control SOE containers.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.common.checkInit(true)) {
+    if (!libUtils.config.checkInit(true)) {
       process.exit(1);
     }
     libUtils.common.runSubscript('dh-soe', yargs);
   })
   .command('proxy', 'Commands for the auto-discover proxy container.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.common.checkInit(true)) {
+    if (!libUtils.config.checkInit(true)) {
       process.exit(1);
     }
     libUtils.common.runSubscript('dh-proxy', yargs);
   })
   .command('exec', 'Run a command in a container.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.common.checkInit(true)) {
+    if (!libUtils.config.checkInit(true)) {
       process.exit(1);
     }
   })
