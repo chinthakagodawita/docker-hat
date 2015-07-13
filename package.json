@@ -26,7 +26,9 @@
   },
   "homepage": "https://github.com/chinthakagodawita/docker-helpers",
   "dependencies": {
-    "shelljs": "^0.5.1",
+    "moment": "^2.10.3",
+    "shelljs": "https://github.com/chinthakagodawita/shelljs/archive/v0.5.1+pr-214.tar.gz",
+    "winston": "^1.0.1",
     "yargs": "^3.15.0"
   }
 }
