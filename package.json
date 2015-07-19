@@ -5,7 +5,8 @@
   "main": "bin/dh.js",
   "bin": {
     "dh": "bin/dh.js",
-    "dh-soe": "bin/dh-soe.js"
+    "dh-soe": "bin/dh-soe.js",
+    "dh-proxy": "bin/dh-proxy.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
