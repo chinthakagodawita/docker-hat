@@ -1,6 +1,6 @@
 {
   "name": "docker-helpers",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Helper commands to run and manage Docker containers on a Mac.",
   "main": "bin/dh.js",
   "bin": {
