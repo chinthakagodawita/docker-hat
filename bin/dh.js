@@ -83,6 +83,9 @@ argv = yargs.usage('dh <command>')
     description: 'Display debug messages.'
   })
   .demand(1, 'please provide a valid command')
+  .version(function() {
+    return require('../package').version;
+  })
   .check(function (argv, opts) {
     if (!argv._[0].match(/init|soe|proxy|exec/)) {
       throw new Error('please provide a valid command');
