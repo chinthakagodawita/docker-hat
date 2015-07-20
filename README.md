@@ -6,6 +6,8 @@ Helper commands to run and manage Docker containers on a Mac.
 ## Requirements
 @TODO
 
+**node >=0.12**
+
 ## Installation
 @TODO
 
