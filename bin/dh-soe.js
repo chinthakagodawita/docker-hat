@@ -43,8 +43,6 @@ argv = yargs.usage('dh soe <command>')
     libSoe.restart(libUtils.common.getYargsContainerInfo(yargs, 'restart'));
   })
   .command('drush', 'Run Drush inside a SOE container', function (yargs) {
-    // @TODO, shell exec a separate program, we need to make yargs isn't
-    // running. It interferes with arguments
     var
       subArgv,
       cmd;
