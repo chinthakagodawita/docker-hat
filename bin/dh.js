@@ -52,7 +52,8 @@ argv = yargs.usage('dh <command>')
   })
   .command('exec', 'Run a command in a container.', function (yargs) {
     var
-      subArgv;
+      subArgv,
+      cmd;
 
     // Prompt to init if required.
     if (!libUtils.config.checkInit(true)) {
@@ -76,7 +77,9 @@ argv = yargs.usage('dh <command>')
       throw new Error('please provide a command to execute');
     }
 
-    libDocker.exec.run(subArgv._[1], subArgv._[2], '-it');
+    // Get entire command set.
+    cmd = subArgv._.slice(2);
+    libDocker.exec.run(subArgv._[1], cmd, '-it');
   })
   .option('d', {
     alias: 'debug',
