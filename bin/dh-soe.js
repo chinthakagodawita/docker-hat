@@ -12,7 +12,7 @@ var
 
 shell = require('shelljs');
 yargs = require('yargs');
-libSoe = require('../lib/soe');
+libSoe = require('../lib/soe').exec;
 libUtils = require('../lib/utils');
 libDocker = require('../lib/docker');
 
