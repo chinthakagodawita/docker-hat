@@ -52,7 +52,8 @@ argv = yargs.usage('dh <command>')
   })
   .command('exec', 'Run a command in a container.', function (yargs) {
     var
-      subArgv;
+      subArgv,
+      cmd;
 
     // Prompt to init if required.
     if (!libUtils.config.checkInit(true)) {
@@ -76,7 +77,33 @@ argv = yargs.usage('dh <command>')
       throw new Error('please provide a command to execute');
     }
 
-    libDocker.exec.run(subArgv._[1], subArgv._[2], '-it');
+    // Get entire command set.
+    cmd = subArgv._.slice(2);
+    libDocker.exec.run(subArgv._[1], cmd, '-it');
+  })
+  .command('shell', 'Attach to container and open bash shell instance.', function (yargs) {
+    var
+      subArgv;
+
+    // Prompt to init if required.
+    if (!libUtils.config.checkInit(true)) {
+      process.exit(1);
+    }
+
+    subArgv = yargs.reset()
+      .usage('dh shell <container name> [options]')
+      .option('d', {
+        alias: 'debug',
+        description: 'Display debug messages.'
+      })
+      .help('help')
+      .argv;
+
+    if (!subArgv._[1]) {
+      throw new Error('please provide a container name');
+    }
+
+    libDocker.exec.run(subArgv._[1], '/bin/bash', '-it');
   })
   .option('d', {
     alias: 'debug',
