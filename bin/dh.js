@@ -38,14 +38,14 @@ argv = yargs.usage('dh <command>')
   })
   .command('soe', 'Commands to control SOE containers.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!libUtils.config.checkInit(libUtils.config.TYPE_GLOBAL)) {
       process.exit(1);
     }
     libUtils.common.runSubscript('dh-soe', yargs);
   })
   .command('proxy', 'Commands for the auto-discover proxy container.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!libUtils.config.checkInit(libUtils.config.TYPE_GLOBAL)) {
       process.exit(1);
     }
     libUtils.common.runSubscript('dh-proxy', yargs);
@@ -56,7 +56,7 @@ argv = yargs.usage('dh <command>')
       cmd;
 
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!libUtils.config.checkInit(libUtils.config.TYPE_GLOBAL)) {
       process.exit(1);
     }
 
@@ -86,7 +86,7 @@ argv = yargs.usage('dh <command>')
       subArgv;
 
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!libUtils.config.checkInit(libUtils.config.TYPE_GLOBAL)) {
       process.exit(1);
     }
 
