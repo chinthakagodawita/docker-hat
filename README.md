@@ -6,7 +6,8 @@ This is a set of helper commands to run and manage Docker containers on OS X.
 ## Requirements
 * [Homebrew](http://brew.sh/)
 * [VirtualBox](https://www.virtualbox.org/)
-* node >= 0.12
+* [Node.js](https://nodejs.org) (>= 0.12)
+    - Automatically installed if install via Homebrew!
 
 ## Installation
 
@@ -14,6 +15,7 @@ Super simple with Homebrew, just run the below and you'll be up-and-running in n
 
 ```bash
 brew tap chinthakagodawita/homebrew-dh
+brew update
 brew install docker-hat
 ```
 
