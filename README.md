@@ -7,7 +7,7 @@ This is a set of helper commands to run and manage Docker containers on OS X.
 * [Homebrew](http://brew.sh/)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Node.js](https://nodejs.org) (>= 0.12)
-    - Automatically installed if install via Homebrew!
+    - Automatically installed if installing via Homebrew!
 
 ## Installation
 
