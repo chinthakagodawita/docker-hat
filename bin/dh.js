@@ -115,7 +115,7 @@ argv = yargs.usage('dh <command>')
     alias: 'debug',
     description: 'Display debug messages.'
   })
-  .demand(1, 'please provide a valid command')
+  .demand(1, '')
   .version(function() {
     return require('../package').version;
   })

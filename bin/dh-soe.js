@@ -75,7 +75,7 @@ argv = yargs.usage('dh soe <command>')
     alias: 'debug',
     description: 'Display debug messages.'
   })
-  .demand(1, 'please provide a valid command')
+  .demand(1, '')
   .example('dh soe start mysite', 'Start a container with the hostname "mysite.docker" using sources from the current directory.')
   .example('dh soe stop mysite', 'Stops the "mysite.docker" container if it exists.')
   .example('dh soe restart mysite', 'Stops the "mysite.docker" container if it exists and starts it back up.')

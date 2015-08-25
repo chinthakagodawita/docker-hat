@@ -24,7 +24,7 @@ argv = yargs.usage('dh proxy <command>')
     alias: 'debug',
     description: 'Display debug messages.'
   })
-  .demand(1, 'please provide a valid command')
+  .demand(1, '')
   .check(function (argv, opts) {
     if (!argv._[0].match(/start|stop|restart/)) {
       throw new Error('please provide a valid command');
