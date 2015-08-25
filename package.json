@@ -1,5 +1,5 @@
 {
-  "name": "docker-helpers",
+  "name": "docker-hat",
   "version": "0.0.5-alpha.6",
   "description": "Helper commands to run and manage Docker containers on a Mac.",
   "main": "bin/dh.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chinthakagodawita/docker-helpers.git"
+    "url": "https://github.com/chinthakagodawita/docker-hat.git"
   },
   "keywords": [
     "docker",
@@ -23,9 +23,9 @@
   "author": "Chinthaka Godawita <chin.godawita@me.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chinthakagodawita/docker-helpers/issues"
+    "url": "https://github.com/chinthakagodawita/docker-hat/issues"
   },
-  "homepage": "https://github.com/chinthakagodawita/docker-helpers",
+  "homepage": "https://github.com/chinthakagodawita/docker-hat",
   "dependencies": {
     "moment": "^2.10.3",
     "readline-sync": "^1.2.19",
