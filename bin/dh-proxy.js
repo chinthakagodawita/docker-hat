@@ -11,13 +11,13 @@ yargs = require('yargs');
 libProxy = require('../lib/proxy');
 
 argv = yargs.usage('dh proxy <command>')
-  .command('start', 'Start the auto-configuring proxy container', function (yargs) {
+  .command('start', 'Start the HTTP proxy container', function (yargs) {
     libProxy.start();
   })
-  .command('stop', 'Stop the nginx proxy container', function (yargs) {
+  .command('stop', 'Stop the HTTP proxy container', function (yargs) {
     libProxy.stop();
   })
-  .command('restart', 'Restart the nginx proxy container', function (yargs) {
+  .command('restart', 'Restart the HTTP proxy container', function (yargs) {
     libProxy.restart();
   })
   .option('d', {
