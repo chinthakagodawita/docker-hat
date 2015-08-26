@@ -82,7 +82,7 @@ Run [Drush](http://www.drush.org/en/master/s) inside on of your running containe
 **Usage**
 
 ```bash
-dh soe start <container-name> [command]
+dh soe drush <container-name> [command]
 ```
 
 ### dh proxy
