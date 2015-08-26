@@ -12,7 +12,7 @@ var
 
 shell = require('shelljs');
 yargs = require('yargs');
-libSoe = require('../lib/soe');
+libSoe = require('../lib/soe').exec;
 libUtils = require('../lib/utils');
 libDocker = require('../lib/docker');
 
@@ -75,11 +75,11 @@ argv = yargs.usage('dh soe <command>')
     alias: 'debug',
     description: 'Display debug messages.'
   })
-  .demand(1, 'please provide a valid command')
-  .example('dh soe start mysite.dev', 'Start a container with the hostname "mysite.dev" using sources from the current directory.')
-  .example('dh soe stop mysite.dev', 'Stops the "mysite.dev" container if it exists.')
-  .example('dh soe restart mysite.dev', 'Stops the "mysite.dev" container if it exists and starts it back up using sources from the current directory.')
-  .example('dh soe drush mysite.dev cc all', 'Clears the Drupal cache in the "mysite.dev" container via Drush.')
+  .demand(1, '')
+  .example('dh soe start mysite', 'Start a container with the hostname "mysite.docker" using sources from the current directory.')
+  .example('dh soe stop mysite', 'Stops the "mysite.docker" container if it exists.')
+  .example('dh soe restart mysite', 'Stops the "mysite.docker" container if it exists and starts it back up.')
+  .example('dh soe drush mysite cc all', 'Clears the Drupal cache in the "mysite.docker" container via Drush.')
   .check(function (argv, opts) {
     if (!argv._[0].match(/start|stop|restart/)) {
       throw new Error('please provide a valid command');

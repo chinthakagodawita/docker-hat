@@ -4,20 +4,26 @@
 var
   shell,
   yargs,
+  Config,
+  globalConfig,
   libUtils,
   libInit,
   libDocker,
+
   argv,
   cmd;
 
 shell = require('shelljs');
 yargs = require('yargs');
+
+Config = require('../lib/config');
 libUtils = require('../lib/utils');
 libInit = require('../lib/init');
 libDocker = require('../lib/docker');
 
 // Make sure we have everything we need.
 libUtils.common.checkRequirements();
+globalConfig = new Config(Config.TYPE_GLOBAL);
 
 argv = yargs.usage('dh <command>')
   .command('init', 'Install/configure boot2docker and any other dependencies.', function (yargs) {
@@ -38,14 +44,14 @@ argv = yargs.usage('dh <command>')
   })
   .command('soe', 'Commands to control SOE containers.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!globalConfig.checkInit(true, 'dh init')) {
       process.exit(1);
     }
     libUtils.common.runSubscript('dh-soe', yargs);
   })
-  .command('proxy', 'Commands for the auto-discover proxy container.', function (yargs) {
+  .command('proxy', 'Commands for the HTTP proxy container.', function (yargs) {
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!globalConfig.checkInit(true, 'dh init')) {
       process.exit(1);
     }
     libUtils.common.runSubscript('dh-proxy', yargs);
@@ -56,7 +62,7 @@ argv = yargs.usage('dh <command>')
       cmd;
 
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!globalConfig.checkInit(true, 'dh init')) {
       process.exit(1);
     }
 
@@ -86,7 +92,7 @@ argv = yargs.usage('dh <command>')
       subArgv;
 
     // Prompt to init if required.
-    if (!libUtils.config.checkInit(true)) {
+    if (!globalConfig.checkInit(true, 'dh init')) {
       process.exit(1);
     }
 
@@ -109,7 +115,7 @@ argv = yargs.usage('dh <command>')
     alias: 'debug',
     description: 'Display debug messages.'
   })
-  .demand(1, 'please provide a valid command')
+  .demand(1, '')
   .version(function() {
     return require('../package').version;
   })

@@ -3,6 +3,10 @@
 logs
 *.log
 
+# IDE artifacts
+.idea
+*.sublime-*
+
 # Runtime data.
 pids
 *.pid
