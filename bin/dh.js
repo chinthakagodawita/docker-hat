@@ -49,6 +49,13 @@ argv = yargs.usage('dh <command>')
     }
     libUtils.common.runSubscript('dh-soe', yargs);
   })
+  .command('host', 'Commands to control the Docker host.', function (yargs) {
+    // Prompt to init if required.
+    if (!globalConfig.checkInit(true, 'dh init')) {
+      process.exit(1);
+    }
+    libUtils.common.runSubscript('dh-host', yargs);
+  })
   .command('exec', 'Run a command in a container.', function (yargs) {
     var
       subArgv,
@@ -113,7 +120,7 @@ argv = yargs.usage('dh <command>')
     return require('../package').version;
   })
   .check(function (argv, opts) {
-    if (!argv._[0].match(/init|soe|exec/)) {
+    if (!argv._[0].match(/init|soe|host|exec/)) {
       throw new Error('please provide a valid command');
     }
   })
