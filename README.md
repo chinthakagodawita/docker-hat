@@ -85,43 +85,6 @@ Run [Drush](http://www.drush.org/en/master/s) inside on of your running containe
 dh soe drush <container-name> [command]
 ```
 
-### dh proxy
-
-Starts up an automagic proxy container that allows multiple containers to share ports.
-
-You shouldn't normally need to start or stop this manually—it should be brought up when required. This command is there for all the times it refuses to listen.
-
-#### Subcommands
-##### dh proxy start
-
-Start the proxy container.
-
-**Usage**
-
-```bash
-dh proxy start
-```
-
-##### dh proxy stop
-
-Stop the proxy container.
-
-**Usage**
-
-```bash
-dh proxy stop
-```
-
-##### dh proxy restart
-
-Restart the proxy container.
-
-**Usage**
-
-```bash
-dh proxy restart
-```
-
 ### dh exec
 
 Run a command (any command!) in a container.
