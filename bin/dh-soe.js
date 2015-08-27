@@ -22,6 +22,7 @@ argv = yargs.usage('dh soe <command>')
   })
   .command('stop', 'Stop a SOE container', function (yargs) {
     var
+      name,
       subArgv,
       sources;
 
@@ -34,18 +35,20 @@ argv = yargs.usage('dh soe <command>')
     .argv;
 
     if (!subArgv._[1]) {
-      throw new Error('please provide a container name');
+      name = null;
+    }
+    else {
+      name = subArgv._[1];
     }
 
-    libSoe.stop(subArgv._[1]);
+    libSoe.stop(name);
   })
   .command('restart', 'Restart a SOE container', function (yargs) {
     libSoe.restart(libUtils.common.getYargsContainerInfo(yargs, 'restart'));
   })
   .command('drush', 'Run Drush inside a SOE container', function (yargs) {
     var
-      subArgv,
-      cmd;
+      subArgv;
 
     subArgv = yargs.reset()
     .usage('dh soe drush <container name> [<commands>] [options]')
@@ -56,20 +59,7 @@ argv = yargs.usage('dh soe <command>')
     .help('help')
     .argv;
 
-    if (!subArgv._[1]) {
-      throw new Error('please provide a container name');
-    }
-
-    // @todo: move this into a library.
-    cmd = [
-      'drush',
-      '--root=/var/www'
-    ];
-    if (subArgv._.length > 1) {
-      cmd = cmd.concat(subArgv._.slice(2));
-    }
-
-    libDocker.exec.run(subArgv._[1], cmd, '-it');
+    libSoe.runDrush(subArgv._.slice(1));
   })
   .option('d', {
     alias: 'debug',
@@ -81,7 +71,7 @@ argv = yargs.usage('dh soe <command>')
   .example('dh soe restart mysite', 'Stops the "mysite.docker" container if it exists and starts it back up.')
   .example('dh soe drush mysite cc all', 'Clears the Drupal cache in the "mysite.docker" container via Drush.')
   .check(function (argv, opts) {
-    if (!argv._[0].match(/start|stop|restart/)) {
+    if (!argv._[0].match(/start|drush|stop|restart/)) {
       throw new Error('please provide a valid command');
     }
   })
