@@ -85,6 +85,53 @@ Run [Drush](http://www.drush.org/en/master/s) inside on of your running containe
 dh soe drush <container-name> [command]
 ```
 
+### dh host
+
+Controls your Docker host virtual machine and environment.
+
+You shouldn't normally need to start or stop this manually—it should be brought up when required. This command is there for all the times it refuses to listen.
+
+#### Subcommands
+##### dh host start
+
+Start the Docker host virtual machine.
+
+**Usage**
+
+```bash
+dh host start
+```
+
+##### dh host stop
+
+Stop the host.
+
+**Usage**
+
+```bash
+dh host stop
+```
+
+##### dh host restart
+
+Restart the host.
+
+**Usage**
+
+```bash
+dh host restart
+```
+
+##### dh host status
+
+Show Docker host status.
+
+**Usage**
+
+```bash
+dh host status
+```
+
 ### dh exec
 
 Run a command (any command!) in a container.
