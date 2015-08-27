@@ -82,44 +82,54 @@ Run [Drush](http://www.drush.org/en/master/s) inside on of your running containe
 **Usage**
 
 ```bash
-dh soe start <container-name> [command]
+dh soe drush <container-name> [command]
 ```
 
-### dh proxy
+### dh host
 
-Starts up an automagic proxy container that allows multiple containers to share ports.
+Controls your Docker host virtual machine and environment.
 
 You shouldn't normally need to start or stop this manually—it should be brought up when required. This command is there for all the times it refuses to listen.
 
 #### Subcommands
-##### dh proxy start
+##### dh host start
 
-Start the proxy container.
+Start the Docker host virtual machine.
 
 **Usage**
 
 ```bash
-dh proxy start
+dh host start
 ```
 
-##### dh proxy stop
+##### dh host stop
 
-Stop the proxy container.
+Stop the host.
 
 **Usage**
 
 ```bash
-dh proxy stop
+dh host stop
 ```
 
-##### dh proxy restart
+##### dh host restart
 
-Restart the proxy container.
+Restart the host.
 
 **Usage**
 
 ```bash
-dh proxy restart
+dh host restart
+```
+
+##### dh host status
+
+Show Docker host status.
+
+**Usage**
+
+```bash
+dh host status
 ```
 
 ### dh exec
