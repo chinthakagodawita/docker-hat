@@ -1,0 +1,17 @@
+dependencies:
+  pre:
+    - brew update
+    - brew install caskroom/cask/brew-cask
+    - brew cask install virtualbox
+    - brew tap chinthakagodawita/homebrew-dh
+    - brew install dinghy
+    - brew reinstall node
+    - npm install
+    - npm link
+
+test:
+  override:
+    - VboxManage --version
+    - docker-machine -D create -d virtualbox default
+    # - dh init -d
+
