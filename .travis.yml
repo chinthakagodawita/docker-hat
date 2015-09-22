@@ -17,5 +17,7 @@ install:
 
 script:
   - VboxManage --version
-  - docker-machine -D create -d virtualbox test
+  - cat /etc/hosts
+  - echo "127.0.0.1 localhost" | sudo tee -a /etc/hosts
+  - docker-machine -D create -d virtualbox default
   # - dh init -d
