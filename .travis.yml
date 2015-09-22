@@ -11,9 +11,11 @@ install:
   - brew cask install virtualbox
   - brew tap chinthakagodawita/homebrew-dh
   - brew install dinghy
-  - brew uninstall node && brew install node
+  - brew reinstall node
   - npm install
   - npm link
 
 script:
-  - dh init -d
+  - VboxManage --version
+  - docker-machine create -d virtualbox test
+  # - dh init -d
