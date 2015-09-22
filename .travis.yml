@@ -17,5 +17,5 @@ install:
 
 script:
   - VboxManage --version
-  - docker-machine create -d virtualbox test
+  - docker-machine -D create -d virtualbox test
   # - dh init -d
