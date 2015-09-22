@@ -1,0 +1,22 @@
+sudo: required
+
+os: osx
+
+# Force OS X.
+language: objective-c
+
+services:
+  - docker
+
+install:
+  - brew update
+  - brew install caskroom/cask/brew-cask
+  - brew cask install virtualbox
+  - brew tap chinthakagodawita/homebrew-dh
+  - brew install dinghy
+  - brew install node
+  - npm install
+  - npm link
+
+script:
+  - dh init -d
