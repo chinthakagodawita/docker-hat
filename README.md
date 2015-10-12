@@ -29,8 +29,7 @@ Sets up Docker to run on your Mac. This goes off and sets up (via dinghy) the fo
 
 * Docker host VM (_boot2docker_): To run your containers in, `docker-machine` is used to instrument this
 * NFS server (_unfsd_): So that files can be shared to the container without being bottlenecked by VirtualBox's shared folder implementation
-* DNS server (_dnsmasq_): Creates a wildcard DNS on `*.docker` which automatically maps to the Docker host
-* HTTP proxy (via _nginx_): Allows multiple containers to share the same port
+* DNS nameserver (_dnsdock_): Creates a wildcard DNS on `*.docker` which automatically maps to the Docker host
 
 **Usage**
 

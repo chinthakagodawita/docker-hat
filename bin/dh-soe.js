@@ -48,6 +48,8 @@ argv = yargs.usage('dh soe <command>')
   })
   .command('drush', 'Run Drush inside a SOE container', function (yargs) {
     var
+      args,
+      flags,
       subArgv;
 
     subArgv = yargs.reset()
@@ -59,7 +61,18 @@ argv = yargs.usage('dh soe <command>')
     .help('help')
     .argv;
 
-    libSoe.runDrush(subArgv._.slice(1));
+    args = subArgv._.slice(1);
+
+    // Also get all flags (except the ones defined above).
+    flags = libUtils.common.getYargsFlags(subArgv, [
+      'h',
+      'help',
+      'd',
+      'debug',
+    ]);
+    args = args.concat(flags);
+
+    libSoe.runDrush(args);
   })
   .option('d', {
     alias: 'debug',
