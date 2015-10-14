@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.0
+* Fixed SOE drush command from complaining if no args are passed through.
+
 ## 0.0.7
 
 * Updated yargs and shelljs
