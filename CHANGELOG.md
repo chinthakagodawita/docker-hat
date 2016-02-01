@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0
 * Updated container repository location.
 
 ## 0.1.0
