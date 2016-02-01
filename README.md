@@ -41,7 +41,7 @@ dh init
 
 Starts up a nifty Standard Operating Environment for building various applications in. Currently only supports PHP (with special focus on Drupal & Wordpress) but more coming soon!
 
-See [docker-containers](https://github.com/chinthakagodawita/docker-containers) for a full list and Dockerfiles.
+See [the docker-containers repository](https://github.com/Sitback/docker-containers) for a full list and Dockerfiles.
 
 #### Subcommands
 ##### dh soe start
